@@ -1,0 +1,21 @@
+/**** Start of imports. If edited, may not auto-convert in the playground. ****/
+var table = ee.FeatureCollection("projects/ee-sohan-23/assets/New-Polygon-Area"),
+    image = ee.Image("projects/ee-sohan-23/assets/EXPORT_BASEMAP");
+/***** End of imports. If edited, may not auto-convert in the playground. *****/
+var geometry = table.geometry()
+
+var gColl = ee.FeatureCollection(geometry);
+
+print('New Feature Collection', gColl);
+
+var image = image.clip(gColl)
+
+Map.addLayer(image)
+
+print('Export_Basemap_1965',image)
+
+Export.image.toDrive({
+  image: image,
+  description: 'Clipped_Basemap_1965',
+  region: geometry
+})

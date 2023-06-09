@@ -1,0 +1,43 @@
+//for the year 2000
+// Load the image collection. 
+var dataset_1 = ee.ImageCollection('LANDSAT/LT05/C02/T1_L2').filterDate('2000-02-01', '2000-05-31').filterBounds(region);
+// Compute the median.
+var median_1 = dataset_1.median();
+print(median_1);
+// Select the bands of interest.
+var bands_1 = median_1.select(['SR_B1','SR_B2', 'SR_B3', 'SR_B4', 'SR_B5']);
+print(bands_1);
+// Export the image, specifying scale and region.
+Export.image.toDrive({
+    image: bands_1,
+    description: 'composite_premonsoon_2000',
+    folder: 'GEE_Composite',
+    scale: 30,
+    region: region
+});
+
+// Make the training dataset.
+var training1 = bands_1.sample({
+    region: region,
+    scale: 30,
+    numPixels: 9000
+});
+
+// Instantiate the clusterer and train it.
+var clusterer1 = ee.Clusterer.wekaKMeans(13).train(training1);
+
+// Cluster the input using the trained clusterer.
+var result1 = bands_1.cluster(clusterer1).clip(region);
+
+// Display the clusters with random colors.
+Map.addLayer(result1.randomVisualizer(), { min: 1, max: 252, gamma: 1.8 }, 'clusters_premonsoon_2000');
+print(result1);
+
+// Exporting UC composite
+Export.image.toDrive({
+    image: result1,
+    description: 'UC_premonsoon_2000',
+    folder: 'GEE_Unsupervised',
+    scale: 30,
+    region: region,
+});
