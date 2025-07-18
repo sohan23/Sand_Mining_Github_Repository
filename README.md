@@ -2,7 +2,7 @@
 
 ## A Remote Sensing and Machine Learning Approach
 
-![Project Banner](https://i.imgur.com/your-banner-image.png)  *(Suggestion: You can create a banner image with some of the key visuals from your project, like the geomorphic maps)*
+![Project Banner](https://drive.google.com/file/d/1ZfWCFh4bIOtpO7DythHgsBV9sTI6F-Bo/view?usp=drive_link)  *(Suggestion: You can create a banner image with some of the key visuals from your project, like the geomorphic maps)*
 
 [cite_start]This repository contains the code and resources for the project "Impact of Sand Mining on the Morphology of the Yamuna River," which was the subject of my Master's thesis at the Indian Institute of Science Education and Research Bhopal[cite: 1, 32, 49].
 
