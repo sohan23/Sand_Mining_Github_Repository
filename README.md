@@ -75,5 +75,5 @@ I would like to express my sincere gratitude to my supervisors, Dr. Kumar Gaurav
 For any questions or collaborations, please feel free to reach out:
 
 * **Name**: Sohan Nag
-* **LinkedIn**: 
-* **GitHub**: 
+* **LinkedIn**: www.linkedin.com/in/sohan23
+* **GitHub**: https://github.com/sohan23/
